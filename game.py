@@ -1,6 +1,6 @@
 import curses
-import drawing
-from drawing import draw_background, draw_tracks, draw_time, \
+import environment
+from environment import draw_background, draw_tracks, draw_time, \
                     draw_debris, draw_horizon, draw_car
 from config import GAME_SIZE, FPS
 from misc import limit_fps
@@ -22,7 +22,7 @@ def draw_scene(screen):
 
 def main(screen):
     screen.resize(*GAME_SIZE)
-    drawing.init(screen)
+    environment.init(screen)
     while True:
         draw_scene(screen)
         state['time'] += 1
