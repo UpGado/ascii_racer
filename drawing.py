@@ -75,3 +75,17 @@ def draw_debris(screen, state):
 def draw_horizon(screen, state):
     for x in range(width):
         screen.addstr(horizon, x, '-')
+
+
+def draw_car(screen, state):
+    car = ['     ____________________________________     ',
+          u'    /                a                   \\    ',
+          u'    |      CCCCC    A A     R R R        |    ',
+          u'    |      C       AaaaA    R    r       |    ',
+          u'  ▉▉|      C      A     A   RrrrR        |▉▉  ',
+          u'  ▉▉|      CCCCC A       A  R     R      |▉▉  ',
+          u'  ▉▉ \\__________________________________/ ▉▉   ']
+    car_width = len(car[0])
+    start_x = int(width/2) - int(car_width/2)
+    for y, line in enumerate(reversed(car)):
+        screen.addstr(height-1-y, start_x, line)
