@@ -4,7 +4,7 @@ from environment import draw_background, draw_tracks, draw_time, \
                     draw_debris, draw_horizon, draw_car
 import hud
 from hud import draw_hud
-from mechanics import handle_key
+from mechanics import update_state
 from config import GAME_SIZE, FPS
 from misc import limit_fps
 
@@ -33,7 +33,7 @@ def main(screen):
         if key == ord('q'):
             break
         else:
-            handle_key(key, state)
+            update_state(key, state)
         draw_scene(screen)
         state['time'] += 1
     screen.clear()

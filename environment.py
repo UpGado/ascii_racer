@@ -11,8 +11,8 @@ def init(screen):
 
 
 def in_range(y, x):
-    return 0 < y and y < height - 1 and \
-           0 < x and x < width - 1
+    return 0 <= y and y <= height - 1 and \
+           0 <= x and x <= width - 1
 
 
 def draw_background(screen, state):
