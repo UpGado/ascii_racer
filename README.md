@@ -1,2 +1,3 @@
-# ascii_racer
-A racing game that runs in Terminal
+# ASCII RACER
+A racing game that runs in Terminal. This is WIP.
+![](docs/screenshot.png)
