@@ -2,11 +2,13 @@ import curses
 import environment
 from environment import draw_background, draw_tracks, draw_time, \
                     draw_debris, draw_horizon, draw_car
+import hud
+from hud import draw_hud
 from config import GAME_SIZE, FPS
 from misc import limit_fps
 
 
-SCENE = [draw_time, draw_horizon, draw_car,
+SCENE = [draw_time, draw_hud, draw_horizon, draw_car,
          draw_debris, draw_tracks, draw_background]
 state = {'time': 0,  # frame
          'speed': 1,  # coord per frame
@@ -23,6 +25,7 @@ def draw_scene(screen):
 def main(screen):
     screen.resize(*GAME_SIZE)
     environment.init(screen)
+    hud.init(screen)
     while True:
         draw_scene(screen)
         state['time'] += 1
