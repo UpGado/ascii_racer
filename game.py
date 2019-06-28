@@ -1,11 +1,15 @@
 import curses
-from drawing import draw_background, draw_tracks, draw_time
+import drawing
+from drawing import draw_background, draw_tracks, draw_time, \
+                    draw_debris, draw_horizon
 from config import GAME_SIZE, FPS
 from misc import limit_fps
 
 
-SCENE = [draw_time, draw_tracks, draw_background]
-state = {'time': 0}
+SCENE = [draw_time, draw_horizon, draw_debris, draw_tracks, draw_background]
+state = {'time': 0,  # frame
+         'speed': 1,  # coord per frame
+         'debris': []}
 
 
 @limit_fps(fps=FPS)
@@ -17,6 +21,7 @@ def draw_scene(screen):
 
 def main(screen):
     screen.resize(*GAME_SIZE)
+    drawing.init(screen)
     while True:
         draw_scene(screen)
         state['time'] += 1
