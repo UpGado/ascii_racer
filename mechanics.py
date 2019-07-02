@@ -6,5 +6,4 @@ def update_state(key, state):
         state['speed'] -= 10
         state['speed'] = max(1, state['speed'])
     elif key == -1:
-        if state['speed'] > 1:
-            state['speed'] -= 1
+        pass
