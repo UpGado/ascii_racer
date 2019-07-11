@@ -1,10 +1,11 @@
 GAME_SIZE = (29, 107)  # rows, cols
 FPS = 60
 
-# Acceleration / Deceleration
+# Car movement
 SPEED_INCREMENT = 3
 SPEED_DECREMENT = SPEED_INCREMENT
 BASE_SPEED = 5
+STEERING_STEP = 0.2
 
 # Environment
 HORIZON = 0.5  # how far from top?
