@@ -10,7 +10,11 @@ def limit_fps(fps):
             start_time = time.time()
             func(*args, **kwargs)
             elapsed_time = time.time() - start_time
-            sleep(delay-elapsed_time)
+            sleep_time = delay-elapsed_time
+            if sleep_time >= 0:
+                sleep(sleep_time)
+            else:
+                raise RuntimeError('cannot keep up with target FPS')
         return run
     return run_fps_capped
 
