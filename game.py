@@ -1,6 +1,6 @@
 import curses
 import environment
-from environment import draw_background, draw_tracks, draw_time, \
+from environment import draw_background, draw_tracks, draw_statusbar, \
                     draw_debris, draw_horizon, draw_car
 import hud
 from hud import draw_hud
@@ -9,9 +9,10 @@ from config import GAME_SIZE, FPS, BASE_SPEED
 from misc import limit_fps
 
 
-SCENE = [draw_time, draw_hud, draw_horizon, draw_car,
+SCENE = [draw_statusbar, draw_hud, draw_horizon, draw_car,
          draw_debris, draw_tracks, draw_background]
-state = {'time': 0,  # frame
+state = {'frames': 0,
+         'time': 0.0,  # seconds
          'speed': BASE_SPEED,  # coord per frame
          'car_x': 0,  # range -1:1
          'debris': []}
@@ -36,7 +37,8 @@ def main(screen):
         else:
             update_state(key, state)
         draw_scene(screen)
-        state['time'] += 1
+        state['frames'] += 1
+        state['time'] += 1/FPS
     screen.clear()
     screen.getkey()
 

@@ -24,8 +24,9 @@ def draw_background(screen, state):
             screen.addstr(y, x, background)
 
 
-def draw_time(screen, state):
-    screen.addstr(0, 0, str(state['time']))
+def draw_statusbar(screen, state):
+    status = f"Time: {state['time']:.2f} seconds"
+    screen.addstr(0, 0, status)
 
 
 def draw_tracks(screen, state):
