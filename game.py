@@ -5,14 +5,15 @@ from environment import draw_background, draw_tracks, draw_time, \
 import hud
 from hud import draw_hud
 from mechanics import update_state
-from config import GAME_SIZE, FPS
+from config import GAME_SIZE, FPS, BASE_SPEED
 from misc import limit_fps
 
 
 SCENE = [draw_time, draw_hud, draw_horizon, draw_car,
          draw_debris, draw_tracks, draw_background]
 state = {'time': 0,  # frame
-         'speed': 1,  # coord per frame
+         'speed': BASE_SPEED,  # coord per frame
+         'car_x': 0,  # range -1:1
          'debris': []}
 
 

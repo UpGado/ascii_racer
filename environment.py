@@ -1,13 +1,14 @@
 import random
+from config import HORIZON, TRACK_SLOPE
+from misc import linear_interpolate
 
 
 def init(screen):
-    global width, height, horizon, left_track, right_track, slope
+    global width, height, horizon_y, left_track, right_track
     height, width = screen.getmaxyx()
-    horizon = int(height/2)
-    slope = 0.7  # x = x0 - slope*y
-    left_track = (int(3*width/8), '▞', -slope)
-    right_track = (int(5*width/8), '▚', slope)
+    horizon_y = int(HORIZON*height)
+    left_track = (int(3*width/8), '▞', -TRACK_SLOPE)
+    right_track = (int(5*width/8), '▚', TRACK_SLOPE)
 
 
 def in_range(y, x):
@@ -28,9 +29,9 @@ def draw_time(screen, state):
 
 
 def draw_tracks(screen, state):
-    global left_track, right_track, height, horizon
+    global left_track, right_track, height, horizon_y
     for (x0, character, step) in [left_track, right_track]:
-        for y in range(horizon, height):
+        for y in range(horizon_y, height):
             screen.addstr(y, x0+int(step*y), character)
 
 
@@ -43,7 +44,7 @@ def spawn_debris(state):
 
     debris = random.choice(debris_list)
 
-    y0 = horizon
+    y0 = horizon_y
     if random.choice([True, False]):
         # left side
         x0 = random.randint(0, left_track[0])
@@ -74,18 +75,19 @@ def draw_debris(screen, state):
 
 def draw_horizon(screen, state):
     for x in range(width):
-        screen.addstr(horizon, x, '-')
+        screen.addstr(horizon_y, x, '-')
 
 
 def draw_car(screen, state):
-    car = ['     ____________________________________     ',
-          u'    /                a                   \\    ',
-          u'    |      CCCCC    A A     R R R        |    ',
-          u'    |      C       AaaaA    R    r       |    ',
-          u'  ▉▉|      C      A     A   RrrrR        |▉▉  ',
-          u'  ▉▉|      CCCCC A       A  R     R      |▉▉  ',
-          u'  ▉▉ \\__________________________________/ ▉▉   ']
+    car = ['     ___________________     ',
+          u'    /                   \\    ',
+          u'  ▉▉|      RrrrR        |▉▉  ',
+          u'  ▉▉|  CA  R     R      |▉▉  ',
+          u'  ▉▉ \\_________________/ ▉▉   ']
+
     car_width = len(car[0])
-    start_x = int(width/2) - int(car_width/2)
+    x0, x1 = left_track[0], right_track[0]
+    car_center_x = int(linear_interpolate(-1, x0, 1, x1, state['car_x']))
+    start_x = car_center_x - int(car_width / 2)
     for y, line in enumerate(reversed(car)):
         screen.addstr(height-1-y, start_x, line)
