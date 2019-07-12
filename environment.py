@@ -44,7 +44,7 @@ def draw_tracks(screen, state):
                 character = c
 
 
-def spawn_debris(state):
+def spawn_debris(state, x_range):
     debris1 = [u'/\\',
                u'\\/']
     debris2 = ['*']
@@ -54,33 +54,40 @@ def spawn_debris(state):
     debris = random.choice(debris_list)
 
     y0 = horizon_y
-    top_track_offset = int(horizon_y*TRACK_SLOPE) - 2
     if random.choice([True, False]):
         # left side
-        x0 = random.randint(0, left_track[0]+top_track_offset)
+        x0 = random.randint(0, x_range[0])
     else:
         # right side
-        x0 = random.randint(right_track[0]-top_track_offset, width-1)
+        x0 = random.randint(x_range[1], width-1)
     t0 = state['time']
-    return debris, y0, x0, t0
+    return debris, y0, x0, t0, DEBRIS_SPEED_MULTIPLIER
 
 
 def draw_debris(screen, state):
-    DEBRIS_SPEED = state['speed']*DEBRIS_SPEED_MULTIPLIER
+    num_missing_debris = MAX_NUM_DEBRIS - len(state['debris'])
+    if num_missing_debris > 0:
+        top_track_offset = int(horizon_y*TRACK_SLOPE) - 2
+        x_range = (left_track[0]+top_track_offset,
+                   right_track[0]-top_track_offset)
+        for _ in range(num_missing_debris):
+            state['debris'].append(spawn_debris(state, x_range))
+    draw_parallax(state['debris'], screen, state)
 
-    for _ in range(MAX_NUM_DEBRIS - len(state['debris'])):
-        state['debris'].append(spawn_debris(state))
 
-    for debris_tuple in state['debris']:
-        debris, y0, x0, t0 = debris_tuple
-        step = 1 if x0 > width / 2 else -1
-        y = y0 + int(DEBRIS_SPEED*(state['time']-t0))
-        x = x0 + int((y-horizon_y)/step)
-        if in_range(y+len(debris), x):
-            for i, line in enumerate(debris):
+def draw_parallax(sprites, screen, state):
+    for sprite_tuple in sprites:
+        sprite, y0, x0, t0, speed_multiplier = sprite_tuple
+        speed = state['speed']*speed_multiplier
+        # parallax sloping
+        step = parallax_slope(x0)
+        y = y0 + int(speed*(state['time']-t0))
+        x = x0 + int((y0-y)*step)
+        if in_range(y+len(sprite), x):
+            for i, line in enumerate(sprite):
                 screen.addstr(y+i, x, line)
         else:
-            state['debris'].remove(debris_tuple)
+            sprites.remove(sprite_tuple)
 
 
 def draw_horizon(screen, state):
@@ -103,3 +110,10 @@ def draw_car(screen, state):
     start_x = int(car_center_x - car_width / 2)
     for y, line in enumerate(reversed(car)):
         screen.addstr(height-1-y, start_x, line)
+
+
+def parallax_slope(x0):
+    # using top end of tracks as reference
+    top_track_offset = int(horizon_y*TRACK_SLOPE)
+    x_range = (left_track[0]+top_track_offset, right_track[0]-top_track_offset)
+    return linear_interpolate(x_range[0], TRACK_SLOPE, x_range[1], -TRACK_SLOPE, x0)
