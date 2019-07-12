@@ -13,7 +13,9 @@ def draw_speedmeter(screen, state):
            '▍             ▐',
            '▍             ▐',
            '▍             ▐',
-           '▙▃▃▃▃▃▃▃▃▃▃▃▃▃▟']
+           '▙▃▃▃▃▃▃▃▃▃▃▃▃▃▟',
+           '▍     MPH     ▐',
+           '▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀']
     hud_width = len(hud[0])
     speed = num2str(state['speed'])
     for l, (hud_line, speed_line) in enumerate(zip(hud[1:-1], speed)):
