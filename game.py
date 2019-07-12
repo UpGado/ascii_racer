@@ -9,13 +9,14 @@ from config import GAME_SIZE, FPS, BASE_SPEED
 from misc import limit_fps
 
 
-SCENE = [draw_statusbar, draw_hud, draw_horizon, draw_car,
-         draw_debris, draw_tracks, draw_background]
+SCENE = [draw_statusbar, draw_hud, draw_horizon, draw_tracks,
+         draw_debris, draw_car, draw_background]
 state = {'frames': 0,
          'time': 0.0,  # seconds
          'speed': BASE_SPEED,  # coord per frame
          'car_x': 0,  # range -1:1
-         'debris': []}
+         'debris': [],
+         'cars': []}
 
 
 @limit_fps(fps=FPS)

@@ -10,3 +10,8 @@ STEERING_STEP = 0.2
 # Environment
 HORIZON = 0.5  # how far from top?
 TRACK_SLOPE = 0.7  # x = x0 - slope*y
+DEBRIS_SPEED_MULTIPLIER = 1.0
+MAX_NUM_DEBRIS = 20
+
+# Cars
+MAX_NUM_CARS = 4

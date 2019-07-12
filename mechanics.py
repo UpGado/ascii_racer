@@ -1,8 +1,9 @@
 from config import SPEED_INCREMENT, SPEED_DECREMENT, BASE_SPEED, \
-                   STEERING_STEP
+                   STEERING_STEP, MAX_NUM_CARS
 
 
 def update_state(key, state):
+    # respond to keys
     if key == ord('w'):
         state['speed'] += SPEED_INCREMENT
         state['speed'] = min(99, state['speed'])
@@ -17,3 +18,8 @@ def update_state(key, state):
         state['car_x'] = max(-1, state['car_x'])
     elif key == -1:
         pass
+
+    # update other cars
+    if len(state['cars']) < MAX_NUM_CARS:
+        pass
+        # TODO: game['cars'] ....
