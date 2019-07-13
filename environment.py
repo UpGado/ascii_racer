@@ -44,35 +44,52 @@ def draw_tracks(screen, state):
                 character = c
 
 
-def spawn_debris(state, x_range):
-    debris1 = [u'/\\',
-               u'\\/']
-    debris2 = ['*']
-    debris3 = ['#']
-    debris_list = [debris1, debris2, debris3]
+def spawn_debris(state, x_ranges):
+    debris_list = [[u'/\\',
+                    u'\\/'],
+                   ['*'],
+                   ['#']]
+    return spawn_sprite(state, x_ranges, debris_list, DEBRIS_SPEED_MULTIPLIER)
 
-    debris = random.choice(debris_list)
+
+def spawn_money(state, x_ranges):
+    money_list = [[r'╲___╱',
+                   r" ╲V╱ ",
+                   r'  ╿   ',
+                   r'  ┴  ']]
+    return spawn_sprite(state, x_ranges, money_list, 1)
+
+
+def spawn_sprite(state, x_ranges, sprites, speed_multiplier):
+    sprite = random.choice(sprites)
 
     y0 = horizon_y
-    if random.choice([True, False]):
-        # left side
-        x0 = random.randint(0, x_range[0])
-    else:
-        # right side
-        x0 = random.randint(x_range[1], width-1)
+    x_range = random.choice(x_ranges)
+    x0 = random.randint(*x_range)
     t0 = state['time']
-    return debris, y0, x0, t0, DEBRIS_SPEED_MULTIPLIER
+    return sprite, y0, x0, t0, speed_multiplier
 
 
 def draw_debris(screen, state):
-    num_missing_debris = MAX_NUM_DEBRIS - len(state['debris'])
-    if num_missing_debris > 0:
-        top_track_offset = int(horizon_y*TRACK_SLOPE) - 2
-        x_range = (left_track[0]+top_track_offset,
-                   right_track[0]-top_track_offset)
-        for _ in range(num_missing_debris):
-            state['debris'].append(spawn_debris(state, x_range))
-    draw_parallax(state['debris'], screen, state)
+    top_track_offset = int(horizon_y*TRACK_SLOPE) - 2
+    x_ranges = [(0, left_track[0]+top_track_offset),
+                (right_track[0]-top_track_offset, width-1)]
+    draw_sprite(screen, state, 'debris', MAX_NUM_DEBRIS, x_ranges, spawn_debris)
+
+
+def draw_money(screen, state):
+    top_track_offset = int(horizon_y*TRACK_SLOPE) + 2
+    x_ranges = [(left_track[0]+top_track_offset,
+                right_track[0]-top_track_offset)]
+    draw_sprite(screen, state, 'money', 1, x_ranges, spawn_money)
+
+
+def draw_sprite(screen, state, key, max_num, x_ranges, spawn_func):
+    num_missing_sprites = max_num - len(state[key])
+    if num_missing_sprites > 0:
+        for _ in range(num_missing_sprites):
+            state[key].append(spawn_func(state, x_ranges))
+    draw_parallax(state[key], screen, state)
 
 
 def draw_parallax(sprites, screen, state):
