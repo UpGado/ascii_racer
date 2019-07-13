@@ -16,6 +16,7 @@ state = {'frames': 0,
          'speed': BASE_SPEED,  # coord per frame
          'car_x': 0,  # range -1:1
          'car_steer_tuple': None,
+         'car_speed_tuple': None,
          'debris': [],
          'money': [],
          'cars': []}
