@@ -21,24 +21,31 @@ def update_state(key, state):
         pass
 
     if steer_tuple is not None:
-        t0, direction = steer_tuple
-        if state['time'] - t0 > STEERING_STICKY_TIME:
-            state['car_steer_tuple'] = None
-        else:
-            new_car_x = state['car_x'] + direction*STEERING_STEP
-            state['car_x'] = make_in_range(new_car_x, -1, 1)
+        update_steering(state, steer_tuple)
 
     if speed_tuple is not None:
-        t0, direction = speed_tuple
-        if state['time'] - t0 > SPEED_STICKY_TIME:
-            state['car_speed_tuple'] = None
-        else:
-            change = SPEED_INCREMENT if direction == 1 \
-                                     else SPEED_DECREMENT
-            new_car_speed = state['speed'] + change
-            state['speed'] = make_in_range(new_car_speed,
-                                           BASE_SPEED, MAX_SPEED)
+        update_speed(state, speed_tuple)
 
+
+def update_steering(state, steer_tuple):
+    t0, direction = steer_tuple
+    if state['time'] - t0 > STEERING_STICKY_TIME:
+        state['car_steer_tuple'] = None
+    else:
+        new_car_x = state['car_x'] + direction*STEERING_STEP
+        state['car_x'] = make_in_range(new_car_x, -1, 1)
+
+
+def update_speed(state, speed_tuple):
+    t0, direction = speed_tuple
+    if state['time'] - t0 > SPEED_STICKY_TIME:
+        state['car_speed_tuple'] = None
+    else:
+        change = SPEED_INCREMENT if direction == 1 \
+                                    else SPEED_DECREMENT
+        new_car_speed = state['speed'] + change
+        state['speed'] = make_in_range(new_car_speed,
+                                        BASE_SPEED, MAX_SPEED)
 
     # update other cars
     if len(state['cars']) < MAX_NUM_CARS:

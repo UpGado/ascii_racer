@@ -120,7 +120,7 @@ def draw_car(screen, state):
           r'  ▉▉ \_______________/ ▉▉   ']
 
     car_width = len(car[0])
-    offset = 2 # offset from track
+    offset = 2  # offset from track
     x0 = left_track[0]+car_width/2+offset
     x1 = right_track[0]-car_width/2-offset
     car_center_x = linear_interpolate(-1, x0, 1, x1, state['car_x'])
