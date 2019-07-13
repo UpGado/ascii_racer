@@ -1,7 +1,7 @@
 import curses
 import environment
 from environment import draw_background, draw_tracks, draw_statusbar, \
-                    draw_debris, draw_horizon, draw_car
+                    draw_debris, draw_horizon, draw_car, draw_money
 import hud
 from hud import draw_hud
 from mechanics import update_state
@@ -10,12 +10,14 @@ from misc import limit_fps
 
 
 SCENE = [draw_statusbar, draw_hud, draw_horizon, draw_tracks,
-         draw_debris, draw_car, draw_background]
+         draw_debris, draw_car, draw_money, draw_background]
 state = {'frames': 0,
          'time': 0.0,  # seconds
          'speed': BASE_SPEED,  # coord per frame
          'car_x': 0,  # range -1:1
+         'car_steer_tuple': None,
          'debris': [],
+         'money': [],
          'cars': []}
 
 
