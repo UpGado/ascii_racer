@@ -1,7 +1,7 @@
 from config import SPEED_INCREMENT, SPEED_DECREMENT, BASE_SPEED, \
                    STEERING_STEP, MAX_NUM_CARS, MAX_SPEED, \
                    STEERING_STICKY_TIME, SPEED_STICKY_TIME
-from misc import make_in_range
+from misc import make_in_range, rectangle_overlap
 
 
 def update_state(key, state):
@@ -26,10 +26,22 @@ def update_state(key, state):
     if speed_tuple is not None:
         update_speed(state, speed_tuple)
 
+    collect_money(state)
+
+
+def collect_money(state):
+    c_ys, c_xs = state['car'].current_coords
+    for money_object in state['money']:
+        ys, xs = money_object.current_coords
+        if rectangle_overlap(*c_ys, *c_xs, *ys, *xs):
+            state['score'] += 10
+            state['money'].remove(money_object)
+
 
 def update_steering(state, steer_tuple):
     t0, direction = steer_tuple
-    if state['time'] - t0 > STEERING_STICKY_TIME:
+    elapsed_time = state['time'] - t0
+    if elapsed_time > STEERING_STICKY_TIME:
         state['car_steer_tuple'] = None
     else:
         new_car_x = state['car_x'] + direction*STEERING_STEP
@@ -46,8 +58,3 @@ def update_speed(state, speed_tuple):
         new_car_speed = state['speed'] + change
         state['speed'] = make_in_range(new_car_speed,
                                         BASE_SPEED, MAX_SPEED)
-
-    # update other cars
-    if len(state['cars']) < MAX_NUM_CARS:
-        pass
-        # TODO: game['cars'] ....

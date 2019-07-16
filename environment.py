@@ -1,7 +1,10 @@
 import random
+from collections import namedtuple
 from config import HORIZON, TRACK_SLOPE, DEBRIS_SPEED_MULTIPLIER, \
                    MAX_NUM_DEBRIS
 from misc import linear_interpolate
+
+Sprite = namedtuple('Sprite', ['attrs', 'current_coords'])
 
 
 def init(screen):
@@ -27,7 +30,7 @@ def draw_background(screen, state):
 
 def draw_statusbar(screen, state):
     status = '|'.join([f"Time: {state['time']:.2f} seconds",
-                      f"Num cars: {len(state['cars'])}"])
+                      f"Score: {state['score']}"])
     screen.addstr(0, 0, status)
 
 
@@ -61,14 +64,15 @@ def spawn_money(state, x_ranges):
 
 
 def spawn_sprite(state, x_ranges, sprites, speed_multiplier):
-    sprite = random.choice(sprites)
+    sprite_design = random.choice(sprites)
 
     y0 = horizon_y
     x_range = random.choice(x_ranges)
     x0 = random.randint(*x_range)
     t0 = state['time']
-    return sprite, y0, x0, t0, speed_multiplier
-
+    new_sprite = Sprite((sprite_design, y0, x0, t0, speed_multiplier),
+                        None)
+    return new_sprite
 
 def draw_debris(screen, state):
     top_track_offset = int(horizon_y*TRACK_SLOPE) - 2
@@ -93,16 +97,17 @@ def draw_sprite(screen, state, key, max_num, x_ranges, spawn_func):
 
 
 def draw_parallax(sprites, screen, state):
-    for sprite_tuple in sprites:
-        sprite, y0, x0, t0, speed_multiplier = sprite_tuple
+    for s, sprite_tuple in enumerate(sprites):
+        sprite, y0, x0, t0, speed_multiplier = sprite_tuple.attrs
         speed = state['speed']*speed_multiplier
-        # parallax sloping
         step = parallax_slope(x0)
         y = y0 + int(speed*(state['time']-t0))
         x = x0 + int((y0-y)*step)
         if in_range(y+len(sprite), x):
             for i, line in enumerate(sprite):
                 screen.addstr(y+i, x, line)
+            sprites[s] = Sprite((sprite, y0, x0, t0, speed_multiplier),
+                                ((y, y+i), (x, x+len(line))))
         else:
             sprites.remove(sprite_tuple)
 
@@ -125,8 +130,13 @@ def draw_car(screen, state):
     x1 = right_track[0]-car_width/2-offset
     car_center_x = linear_interpolate(-1, x0, 1, x1, state['car_x'])
     start_x = int(car_center_x - car_width / 2)
-    for y, line in enumerate(reversed(car)):
-        screen.addstr(height-1-y, start_x, line)
+    for offset, line in enumerate(reversed(car)):
+        y = height-1-offset
+        x = start_x + len(line)
+        screen.addstr(y, start_x, line)
+    y_coords = (height-1-offset, height-1)
+    x_coords = (start_x, x)
+    state['car'] = Sprite(None, (y_coords, x_coords))
 
 
 def parallax_slope(x0):

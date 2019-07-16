@@ -14,12 +14,14 @@ SCENE = [draw_statusbar, draw_hud, draw_horizon, draw_tracks,
 state = {'frames': 0,
          'time': 0.0,  # seconds
          'speed': BASE_SPEED,  # coord per frame
+         'car': None,
          'car_x': 0,  # range -1:1
          'car_steer_tuple': None,
          'car_speed_tuple': None,
-         'debris': [],
-         'money': [],
-         'cars': []}
+         'debris': [],  # debris objects drawn in scene
+         'money': [],  # money objects drawn in scene
+         'score': 0,
+         'pdb': False}  # for testing
 
 
 @limit_fps(fps=FPS)
@@ -35,12 +37,14 @@ def main(screen):
     environment.init(screen)
     hud.init(screen)
     while True:
+        draw_scene(screen)
         key = screen.getch()
         if key == ord('q'):
             break
+        elif key == ord('p'):
+            state['pdb'] = True
         else:
             update_state(key, state)
-        draw_scene(screen)
         state['frames'] += 1
         state['time'] += 1/FPS
     screen.clear()

@@ -28,3 +28,13 @@ def make_in_range(x, x_min, x_max):
     x = min(x, x_max)
     x = max(x_min, x)
     return x
+
+
+def rectangle_overlap(r1_y1, r1_y2, r1_x1, r1_x2,
+                      r2_y1, r2_y2, r2_x1, r2_x2):
+    if r2_x2 < r1_x1 or r2_x1 > r1_x2:
+        return False
+    elif r2_y2 < r1_y1 or r2_y1 > r1_y2:
+        return False
+    else:
+        return True
