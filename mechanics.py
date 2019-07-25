@@ -34,7 +34,8 @@ def collect_money(state):
     for money_object in state['money']:
         ys, xs = money_object.current_coords
         if rectangle_overlap(*c_ys, *c_xs, *ys, *xs):
-            state['score'] += 10
+            (_, score), *args = money_object.attrs
+            state['score'] += score
             state['money'].remove(money_object)
 
 

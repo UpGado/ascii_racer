@@ -56,10 +56,17 @@ def spawn_debris(state, x_ranges):
 
 
 def spawn_money(state, x_ranges):
-    money_list = [[r'╲___╱',
-                   r" ╲V╱ ",
+    def martini_glass(ch):
+        return [r'╲___╱',
+                   f" ╲{ch}╱ ",
                    r'  ╿   ',
-                   r'  ┴  ']]
+                   r'  ┴  ']
+    money_list = [(martini_glass('V'), 10),
+                  (martini_glass('$'), 1),
+                  (martini_glass('J'), 5),
+                  (martini_glass('B'), -20),
+                  (martini_glass('B'), -20),
+                  (martini_glass('B'), -20)]
     return spawn_sprite(state, x_ranges, money_list, 1)
 
 
@@ -99,12 +106,16 @@ def draw_sprite(screen, state, key, max_num, x_ranges, spawn_func):
 def draw_parallax(sprites, screen, state):
     for s, sprite_tuple in enumerate(sprites):
         sprite, y0, x0, t0, speed_multiplier = sprite_tuple.attrs
+        if type(sprite) is tuple:
+            sprite_design = sprite[0]
+        else:
+            sprite_design = sprite
         speed = state['speed']*speed_multiplier
         step = parallax_slope(x0)
         y = y0 + int(speed*(state['time']-t0))
         x = x0 + int((y0-y)*step)
-        if in_range(y+len(sprite), x):
-            for i, line in enumerate(sprite):
+        if in_range(y+len(sprite_design), x):
+            for i, line in enumerate(sprite_design):
                 screen.addstr(y+i, x, line)
             sprites[s] = Sprite((sprite, y0, x0, t0, speed_multiplier),
                                 ((y, y+i), (x, x+len(line))))
@@ -118,11 +129,11 @@ def draw_horizon(screen, state):
 
 
 def draw_car(screen, state):
-    car = ['      _______________     ',
-          r'     /               \    ',
-          r'  ▉▉|      RrrrR      |▉▉  ',
-          r'  ▉▉|  CA  R     R    |▉▉  ',
-          r'  ▉▉ \_______________/ ▉▉   ']
+    car = ['      ____________     ',
+          r'     /            \    ',
+          r'  ▉▉|      RrrrR   |▉▉  ',
+          r'  ▉▉|  CA  R     R |▉▉  ',
+          r'  ▉▉ \____________/ ▉▉   ']
 
     car_width = len(car[0])
     offset = 2  # offset from track
