@@ -4,7 +4,7 @@ A racing game that runs in Terminal. This is WIP.
 100% Python.
 
 ### Start Game
-To start, run `python3 game.py` to behind the game
+To start, run `python3 game.py` to begin the game
 
 ### Scoring
 There are four different types of drinks that you can collect on the racetrack. 
