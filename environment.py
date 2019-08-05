@@ -63,7 +63,7 @@ def spawn_money(state, x_ranges):
                    r'  ┴  ']
     money_list = [(martini_glass('V'), 10),
                   (martini_glass('$'), 1),
-                  (martini_glass('J'), 5),
+                  (martini_glass('G'), 5),
                   (martini_glass('B'), -20),
                   (martini_glass('B'), -20),
                   (martini_glass('B'), -20)]
