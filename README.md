@@ -3,6 +3,18 @@ A racing game that runs in Terminal. This is WIP.
 
 100% Python.
 
+### Instructions 
+
+The goal is to avoid the `Beer` glass.
+The game is only key based.
+
+| Keys | Role        |
+|------|-------------|
+| a    | Move Left   |
+| d    | Move Right  |
+| w    | Accelerate  |
+| s    |  Decelerate |
+
 ### Start Game
 To start, run `python3 game.py` to begin the game
 
