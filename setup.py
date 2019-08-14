@@ -22,5 +22,8 @@ setuptools.setup(
         'console_scripts': [
             'asciiracer = asciiracer.__main__:main'
         ]
-    }
+    },
+    install_requires=[
+        'windows-curses >= 2.0;platform_system=="Windows"'
+    ]
 )
