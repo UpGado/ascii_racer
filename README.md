@@ -21,10 +21,6 @@ Collect as many alcoholic drinks as possible, while avoiding the `Beer` drinks. 
 ### How to set up?
 Make sure you are running at least Python 3.6.0
 
-Only dependency is `curses` module. Depending on your platform:
-- Linux or Mac: you're all set, as it will be installed by default.
-- Windows: you might have to run the game in Cygwin or a Windows Subsytem for Linux (WSL). Or you can try running `pip install windows-curses`
-
 Install using pip:
 ```bash
 pip3 install asciiracer
@@ -33,13 +29,14 @@ or clone the repository and install manually:
 
 ```bash
 $ git clone https://github.com/UpGado/ascii_racer.git
-$ python3 setup.py install
+$ cd ascii_racer && python3 setup.py install
 ```
 
 ### Start Game
-To start the game, run:
+To start the game, run either:
 ```bash
 $ asciiracer
+$ python -m asciiracer
 ```
 
 ### Scoring
@@ -52,4 +49,4 @@ There are four different types of drinks that you can collect on the racetrack.
 ### Contributions
 If you encounter any problem or have any suggestions, please [open an issue](https://github.com/UpGado/ascii_racer/issues/new) or [send a PR](https://github.com/UpGado/ascii_racer/pulls).
 
-ASCII-RACER is still in beta. If you are interested, contributions are highly welcome.
+ASCII-RACER is still new. If you are interested, contributions are highly welcome!
