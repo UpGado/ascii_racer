@@ -37,7 +37,10 @@ $ python3 setup.py install
 ```
 
 ### Start Game
-To start, run `python3 -m asciiracer` to begin the game
+To start the game, run:
+```bash
+$ asciiracer
+```
 
 ### Scoring
 There are four different types of drinks that you can collect on the racetrack. 
