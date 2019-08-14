@@ -20,7 +20,7 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'asciiracer = asciiracer.__main__'
+            'asciiracer = asciiracer.__main__:main'
         ]
     }
 )
