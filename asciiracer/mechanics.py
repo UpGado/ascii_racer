@@ -1,7 +1,7 @@
-from config import SPEED_INCREMENT, SPEED_DECREMENT, BASE_SPEED, \
+from .config import SPEED_INCREMENT, SPEED_DECREMENT, BASE_SPEED, \
                    STEERING_STEP, MAX_NUM_CARS, MAX_SPEED, \
                    STEERING_STICKY_TIME, SPEED_STICKY_TIME
-from misc import make_in_range, rectangle_overlap
+from .misc import make_in_range, rectangle_overlap
 
 
 def update_state(key, state):

@@ -1,12 +1,12 @@
 import curses
-import environment
-from environment import draw_background, draw_tracks, draw_statusbar, \
+from . import environment
+from .environment import draw_background, draw_tracks, draw_statusbar, \
                     draw_debris, draw_horizon, draw_car, draw_money
-import hud
-from hud import draw_hud
-from mechanics import update_state
-from config import GAME_SIZE, FPS, BASE_SPEED
-from misc import limit_fps
+from . import hud
+from .hud import draw_hud
+from .mechanics import update_state
+from .config import GAME_SIZE, FPS, BASE_SPEED
+from .misc import limit_fps
 
 
 SCENE = [draw_statusbar, draw_hud, draw_horizon, draw_tracks,

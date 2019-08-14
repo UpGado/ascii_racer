@@ -1,4 +1,4 @@
-from ascii_factory import num2str
+from .ascii_factory import num2str
 
 
 def init(screen):

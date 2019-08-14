@@ -30,7 +30,7 @@ $ git clone https://github.com/UpGado/ascii_racer.git
 or download it as a .zip file.
 
 ### Start Game
-To start, run `python3 game.py` to begin the game
+To start, run `python3 -m asciiracer` to begin the game
 
 ### Scoring
 There are four different types of drinks that you can collect on the racetrack. 

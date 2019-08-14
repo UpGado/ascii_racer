@@ -1,8 +1,8 @@
 import random
 from collections import namedtuple
-from config import HORIZON, TRACK_SLOPE, DEBRIS_SPEED_MULTIPLIER, \
+from .config import HORIZON, TRACK_SLOPE, DEBRIS_SPEED_MULTIPLIER, \
                    MAX_NUM_DEBRIS
-from misc import linear_interpolate
+from .misc import linear_interpolate
 
 Sprite = namedtuple('Sprite', ['attrs', 'current_coords'])
 
