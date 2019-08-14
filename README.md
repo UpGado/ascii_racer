@@ -1,4 +1,7 @@
 # ASCII RACER
+
+[![PyPI version](https://badge.fury.io/py/asciiracer.svg)](https://badge.fury.io/py/asciiracer)
+
 A racing game that runs in Terminal. 100% Python
 
 <p align="center"><img src="https://raw.githubusercontent.com/UpGado/ascii_racer/master/docs/gameplay.gif" alt="ascii-racer"/></p>
@@ -22,12 +25,16 @@ Only dependency is `curses` module. Depending on your platform:
 - Linux or Mac: you're all set, as it will be installed by default.
 - Windows: you might have to run the game in Cygwin or a Windows Subsytem for Linux (WSL). Or you can try running `pip install windows-curses`
 
-Clone the repository
+Install using pip:
+```bash
+pip3 install asciiracer
+```
+or clone the repository and install manually:
 
 ```bash
 $ git clone https://github.com/UpGado/ascii_racer.git
+$ python3 setup.py install
 ```
-or download it as a .zip file.
 
 ### Start Game
 To start, run `python3 -m asciiracer` to begin the game
