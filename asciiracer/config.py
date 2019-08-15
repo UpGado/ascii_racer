@@ -2,7 +2,6 @@
 # Definitions:
 # - [X]_STICKY_TIME: amount of time a key press of action [X]
 #                    sticks in the game
-GAME_SIZE = (29, 107)  # rows, cols
 FPS = 60
 
 # Car movement

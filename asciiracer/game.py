@@ -5,8 +5,9 @@ from .environment import draw_background, draw_tracks, draw_statusbar, \
 from . import hud
 from .hud import draw_hud
 from .mechanics import update_state
-from .config import GAME_SIZE, FPS, BASE_SPEED
+from .config import FPS, BASE_SPEED
 from .misc import limit_fps
+from .resizer import Resizer
 
 
 SCENE = [draw_statusbar, draw_hud, draw_horizon, draw_tracks,
@@ -32,7 +33,8 @@ def draw_scene(screen):
 
 
 def main(screen):
-    screen.resize(*GAME_SIZE)
+    resizer = Resizer()
+    screen.resize(*resizer.game_size)
     screen.nodelay(True)
     environment.init(screen)
     hud.init(screen)
