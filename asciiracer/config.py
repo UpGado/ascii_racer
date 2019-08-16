@@ -1,8 +1,10 @@
+import os
+
 #
 # Definitions:
 # - [X]_STICKY_TIME: amount of time a key press of action [X]
 #                    sticks in the game
-GAME_SIZE = (29, 107)  # rows, cols
+GAME_SIZE = tuple(int(i) for i in os.popen('stty size', 'r').read().split())
 FPS = 60
 
 # Car movement
