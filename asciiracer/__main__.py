@@ -1,8 +1,9 @@
-from . import game
+from .game import AsciiRacer
 
 
 def main():
-    game.run()
+    asciiracer = AsciiRacer()
+    asciiracer.run()
 
 
 main()

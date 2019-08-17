@@ -11,7 +11,7 @@ from .misc import limit_fps
 
 class AsciiRacer(object):
     def __init__(self):
-        self.SCENE = [draw_statusbar, draw_hud, draw_horizon, draw_tracks,
+        self.SCENE = [draw_hud, draw_horizon, draw_tracks,
                       draw_debris, draw_car, draw_money, draw_background]
         self.state = {'frames': 0,
                       'time': 0.0,  # seconds
