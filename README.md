@@ -22,7 +22,12 @@ Collect as many alcoholic drinks as possible, while avoiding the `Beer` drinks. 
 | s    |  Decelerate |
 | q    |  Quit game  |
 
-### How to set up?
+### Installation
+
+> ```diff
+> + Please report issues if you try to install and run into problems!
+> ```
+
 Make sure you are running at least Python 3.6.0
 
 Install using pip:
