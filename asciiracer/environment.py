@@ -75,6 +75,7 @@ def spawn_sprite(state, x_ranges, sprites, speed_multiplier):
 
     y0 = horizon_y
     x_range = random.choice(x_ranges)
+    x_range = tuple(sorted(x_range))
     x0 = random.randint(*x_range)
     t0 = state['time']
     new_sprite = Sprite((sprite_design, y0, x0, t0, speed_multiplier),
