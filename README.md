@@ -5,6 +5,8 @@
 
 A racing game that runs in Terminal. 100% Python
 
+This branch contains a custom version of the game that is compatible with non-human agents. It follows the OpenAI game model. Check `asciiracer/__main__.py` for an example for how to use the game in that mode.
+
 <p align="center"><img src="https://raw.githubusercontent.com/UpGado/ascii_racer/master/docs/gameplay.gif" alt="ascii-racer"/></p>
 
 ## Instructions
