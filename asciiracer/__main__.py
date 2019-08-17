@@ -7,7 +7,7 @@ def main():
     # Example for how to use asciiracer class as an agent
     asciiracer = AsciiRacer()
     matrices = []
-    for x in range(100):
+    for x in range(1000):
         score, matrix = asciiracer.step(ord('w'))
         matrices.append(matrix)
     asciiracer.step(ord('q'))
