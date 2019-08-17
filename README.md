@@ -3,6 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/asciiracer.svg)](https://badge.fury.io/py/asciiracer)
 [![Build Status](https://travis-ci.com/UpGado/ascii_racer.svg?branch=master)](https://travis-ci.com/UpGado/ascii_racer)
 [![Downloads](https://pepy.tech/badge/asciiracer)](https://pepy.tech/project/asciiracer)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 A racing game that runs in Terminal. 100% Python
 
