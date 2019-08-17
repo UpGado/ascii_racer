@@ -12,8 +12,10 @@ from .misc import limit_fps
 
 class AsciiRacer(object):
     def __init__(self):
-        self.SCENE = [draw_hud, draw_horizon, draw_tracks,
-                      draw_debris, draw_car, draw_money, draw_background]
+        self.SCENE = [  # draw_tracks,
+                      draw_hud, draw_horizon, draw_tracks,
+                      # draw_debris,
+                      draw_car, draw_money, draw_background]
         self.reset_state()
         self.initialize_screen()
         curses.noecho()
@@ -32,7 +34,7 @@ class AsciiRacer(object):
                       'score': 0,
                       'pdb': False}  # for testing
 
-    # @limit_fps(fps=FPS)  # uncomment to restore FPS cap
+    # @limit_fps(fps=FPS)
     def draw_scene(self, screen):
         for draw_element in reversed(self.SCENE):
             draw_element(screen, self.state)
