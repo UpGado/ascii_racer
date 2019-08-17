@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='asciiracer',
-    version='1.0.0',
+    version='1.0.1',
     author='Ahmed Gado',
     author_email='ahmedehabg@gmail.com',
     description='A racing game that runs in terminal',
