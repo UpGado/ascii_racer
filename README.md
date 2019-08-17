@@ -1,6 +1,7 @@
 # ASCII RACER
 
 [![PyPI version](https://badge.fury.io/py/asciiracer.svg)](https://badge.fury.io/py/asciiracer)
+[![Build Status](https://travis-ci.com/UpGado/ascii_racer.svg?branch=master)](https://travis-ci.com/UpGado/ascii_racer)
 
 A racing game that runs in Terminal. 100% Python
 
