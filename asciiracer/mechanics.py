@@ -1,5 +1,5 @@
 from .config import SPEED_INCREMENT, SPEED_DECREMENT, BASE_SPEED, \
-                   STEERING_STEP, MAX_NUM_CARS, MAX_SPEED, \
+                   STEERING_STEP, MAX_SPEED, \
                    STEERING_STICKY_TIME, SPEED_STICKY_TIME
 from .misc import make_in_range, rectangle_overlap
 
@@ -58,4 +58,4 @@ def update_speed(state, speed_tuple):
                                     else SPEED_DECREMENT
         new_car_speed = state['speed'] + change
         state['speed'] = make_in_range(new_car_speed,
-                                        BASE_SPEED, MAX_SPEED)
+                                       BASE_SPEED, MAX_SPEED)

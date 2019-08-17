@@ -51,4 +51,5 @@ def main(screen):
     screen.getkey()
 
 
-curses.wrapper(main)
+def run():
+    curses.wrapper(main)

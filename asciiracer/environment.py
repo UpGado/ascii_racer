@@ -58,9 +58,9 @@ def spawn_debris(state, x_ranges):
 def spawn_money(state, x_ranges):
     def martini_glass(ch):
         return [r'╲___╱',
-                   f" ╲{ch}╱ ",
-                   r'  ╿   ',
-                   r'  ┴  ']
+                f" ╲{ch}╱ ",
+                r'  ╿   ',
+                r'  ┴  ']
     money_list = [(martini_glass('V'), 10),
                   (martini_glass('$'), 1),
                   (martini_glass('G'), 5),
@@ -81,11 +81,13 @@ def spawn_sprite(state, x_ranges, sprites, speed_multiplier):
                         None)
     return new_sprite
 
+
 def draw_debris(screen, state):
     top_track_offset = int(horizon_y*TRACK_SLOPE) - 2
     x_ranges = [(0, left_track[0]+top_track_offset),
                 (right_track[0]-top_track_offset, width-1)]
-    draw_sprite(screen, state, 'debris', MAX_NUM_DEBRIS, x_ranges, spawn_debris)
+    draw_sprite(screen, state, 'debris', MAX_NUM_DEBRIS,
+                x_ranges, spawn_debris)
 
 
 def draw_money(screen, state):
@@ -129,11 +131,11 @@ def draw_horizon(screen, state):
 
 
 def draw_car(screen, state):
-    car = ['      ____________     ',
-          r'     /            \    ',
-          r'  ▉▉|      RrrrR   |▉▉  ',
-          r'  ▉▉|  CA  R     R |▉▉  ',
-          r'  ▉▉ \____________/ ▉▉   ']
+    car = [r'      ____________     ',
+           r'     /            \    ',
+           r'  ▉▉|      RrrrR   |▉▉  ',
+           r'  ▉▉|  CA  R     R |▉▉  ',
+           r'  ▉▉ \____________/ ▉▉   ']
 
     car_width = len(car[0])
     offset = 2  # offset from track
@@ -154,4 +156,5 @@ def parallax_slope(x0):
     # using top end of tracks as reference
     top_track_offset = int(horizon_y*TRACK_SLOPE)
     x_range = (left_track[0]+top_track_offset, right_track[0]-top_track_offset)
-    return linear_interpolate(x_range[0], TRACK_SLOPE, x_range[1], -TRACK_SLOPE, x0)
+    return linear_interpolate(x_range[0], TRACK_SLOPE,
+                              x_range[1], -TRACK_SLOPE, x0)
