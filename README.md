@@ -1,6 +1,6 @@
 # ASCII RACER
 
-[![PyPI version](https://badge.fury.io/py/asciiracer.svg)](https://badge.fury.io/py/asciiracer)
+![PyPI](https://img.shields.io/pypi/v/asciiracer?color=success&label=pypi%20package)
 [![Build Status](https://travis-ci.com/UpGado/ascii_racer.svg?branch=master)](https://travis-ci.com/UpGado/ascii_racer)
 ![GitHub last commit](https://img.shields.io/github/last-commit/UpGado/ascii_racer)
 [![Downloads](https://pepy.tech/badge/asciiracer)](https://pepy.tech/project/asciiracer)
