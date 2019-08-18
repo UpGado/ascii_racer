@@ -1,10 +1,10 @@
-import os
+from .misc import get_terminal_size
 
 #
 # Definitions:
 # - [X]_STICKY_TIME: amount of time a key press of action [X]
 #                    sticks in the game
-GAME_SIZE = tuple(int(i) for i in os.popen('stty size', 'r').read().split())
+GAME_SIZE = get_terminal_size()
 FPS = 60
 
 # Car movement
