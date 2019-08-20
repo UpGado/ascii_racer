@@ -9,7 +9,7 @@ install:
 before_script:
   - flake8 .
 script:
-  - pytest
+  - python -m pytest
 deploy:
   provider: pypi
   user: "UpGado"
