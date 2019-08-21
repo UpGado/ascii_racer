@@ -61,12 +61,26 @@ def spawn_money(state, x_ranges):
                 f" ╲{ch}╱ ",
                 r'  ╿   ',
                 r'  ┴  ']
+
+    def beer_can():
+        return [r'┌-/-┐',
+                r'|   |',
+                r'|BUD|',
+                r'|   |',
+                r'└---┘']
+
+    def dollar_bill():
+        return [r'     ',
+                r'┌---┐',
+                r'|$1$|',
+                r'└---┘',
+                r'     ']
     money_list = [(martini_glass('V'), 10),
-                  (martini_glass('$'), 1),
+                  (dollar_bill(), 1),
                   (martini_glass('G'), 5),
-                  (martini_glass('B'), -20),
-                  (martini_glass('B'), -20),
-                  (martini_glass('B'), -20)]
+                  (beer_can(), -20),
+                  (beer_can(), -20),
+                  (beer_can(), -20)]
     return spawn_sprite(state, x_ranges, money_list, 1)
 
 
