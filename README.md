@@ -5,6 +5,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/UpGado/ascii_racer)
 [![Downloads](https://pepy.tech/badge/asciiracer)](https://pepy.tech/project/asciiracer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Run on Repl.it](https://repl.it/badge/github/UpGado/ascii_racer)](https://repl.it/github/UpGado/ascii_racer)
 
 A racing game that runs in Terminal. 100% Python
 
