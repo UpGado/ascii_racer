@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Run on Repl.it](https://repl.it/badge/github/UpGado/ascii_racer)](https://repl.it/github/UpGado/ascii_racer)
 
-A racing game that runs in Terminal. 100% Python
+An endless racing game that runs in the terminal. 100% Python.
 
 <p align="center"><img src="https://raw.githubusercontent.com/UpGado/ascii_racer/master/docs/gameplay.gif" alt="ascii-racer"/></p>
 
@@ -57,6 +57,18 @@ There are four different types of drinks that you can collect on the racetrack.
 * Beer - Negative 20 points
 
 ### Contributions
-If you encounter any problem or have any suggestions, please [open an issue](https://github.com/UpGado/ascii_racer/issues/new) or [send a PR](https://github.com/UpGado/ascii_racer/pulls).
 
-ASCII-RACER is still new. If you are interested, contributions are highly welcome!
+> ```diff
+> + If you think this is cool, fork it and make it cooler!
+> ```
+
+This might be great practice if you want to learn Python, and you can personally reach out to me if you have any questions about the *simple but elegant* code base.
+
+#### Possible Improvements
+
+- Color support.
+- Curvy roads and more interesting tracks.
+- Multiplayer/Competitive racing.
+- *Your* creative idea.
+
+If you encounter any problem or have any suggestions, please [open an issue](https://github.com/UpGado/ascii_racer/issues/new) or [send a PR](https://github.com/UpGado/ascii_racer/pulls).
