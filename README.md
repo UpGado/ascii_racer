@@ -1,4 +1,14 @@
-# ASCII RACER
+```
+                    _ _                           
+     /\            (_(_)                          
+    /  \   ___  ___ _ _   _ __ __ _  ___ ___ _ __ 
+   / /\ \ / __|/ __| | | | '__/ _` |/ __/ _ | '__|
+  / ____ \\__ | (__| | | | | | (_| | (_|  __| |   
+ /_/    \_|___/\___|_|_| |_|  \__,_|\___\___|_|   
+```                                              
+                                                  
+
+
 
 ![PyPI](https://img.shields.io/pypi/v/asciiracer?color=success&label=pypi%20package)
 [![Build Status](https://travis-ci.com/UpGado/ascii_racer.svg?branch=master)](https://travis-ci.com/UpGado/ascii_racer)
