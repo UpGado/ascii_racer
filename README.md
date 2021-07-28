@@ -16,7 +16,7 @@
 [![Downloads](https://pepy.tech/badge/asciiracer)](https://pepy.tech/project/asciiracer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Run on Repl.it](https://repl.it/badge/github/UpGado/ascii_racer)](https://repl.it/github/UpGado/ascii_racer)
-[![install with nix](https://gitlab.com/daniil.iaitskov/ascii_racer.nix)
+[<img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nixos.svg" width="50"/>](https://gitlab.com/daniil.iaitskov/ascii_racer.nix)
 
 An endless racing game that runs in the terminal. 100% Python.
 
