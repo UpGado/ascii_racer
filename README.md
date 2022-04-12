@@ -59,6 +59,15 @@ $ asciiracer
 $ python -m asciiracer
 ```
 
+### Run multiplayer server
+```bash
+$ python -m asciiracer.multiplayer.server
+```
+
+To configure multiplayer settings you need to edit `Multiplayer` section
+in `config.py`
+
+
 ### Scoring
 There are four different types of drinks that you can collect on the racetrack. 
 * Vodka - 10 Points
