@@ -24,3 +24,8 @@ MAX_NUM_DEBRIS = 20
 
 # Cars
 MAX_NUM_CARS = 4
+
+# Multiplayer
+SERVER_HOST = 'localhost'
+SERVER_PORT = 8087
+IS_MULTIPLAYER_ENABLED = False

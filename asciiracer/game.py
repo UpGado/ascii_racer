@@ -1,16 +1,30 @@
 import curses
 from . import environment
-from .environment import draw_background, draw_tracks, draw_statusbar, \
-                    draw_debris, draw_horizon, draw_car, draw_money
+from .environment import (
+    draw_background,
+    draw_tracks,
+    draw_statusbar,
+    draw_debris,
+    draw_horizon,
+    draw_car,
+    draw_money
+)
 from . import hud
-from .hud import draw_hud
+from .hud import draw_hud, draw_score_table
 from .mechanics import update_state
-from .config import GAME_SIZE, FPS, BASE_SPEED
+from .config import GAME_SIZE, FPS, BASE_SPEED, IS_MULTIPLAYER_ENABLED
 from .misc import limit_fps
 
 
-SCENE = [draw_statusbar, draw_hud, draw_horizon, draw_tracks,
+SCENE = [lambda screen, state: True, draw_statusbar, draw_hud, draw_horizon, draw_tracks,
          draw_debris, draw_car, draw_money, draw_background]
+
+if IS_MULTIPLAYER_ENABLED:
+    from asciiracer.multiplayer.client import Client
+    client = Client()
+    client.run_client_in_thread()
+    SCENE[0] = lambda screen, state: draw_score_table(screen, state, client)
+
 state = {'frames': 0,
          'time': 0.0,  # seconds
          'speed': BASE_SPEED,  # coord per frame

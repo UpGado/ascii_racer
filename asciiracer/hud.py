@@ -1,4 +1,7 @@
+import json
+
 from .ascii_factory import num2str
+from .multiplayer.client import Client
 
 
 def init(screen):
@@ -24,6 +27,23 @@ def draw_speedmeter(screen, state):
     y0 = margin_y
     for y, line in enumerate(hud):
         screen.addstr(y0+y, x0, line)
+
+
+def draw_score_table(screen, state, client: Client):
+    """
+    Only available in multiplayer.
+    :return:
+    """
+    y0 = 4
+    x0 = width - 30
+    screen.addstr(y0, x0, "SCORE TABLE:")
+    for player_id, player_score in client.score_table.items():
+        y0 += 1
+        if int(player_id) == client.id:
+            player_id = "You"
+        score_row = f'{player_id}: {player_score}'
+        screen.addstr(y0, x0, score_row)
+    client.send_score_update_message(state["score"])
 
 
 def draw_hud(screen, state):
