@@ -21,7 +21,8 @@ state = {'frames': 0,
          'debris': [],  # debris objects drawn in scene
          'money': [],  # money objects drawn in scene
          'score': 0,
-         'pdb': False}  # for testing
+         'pdb': False,  # for testing
+         'paused': False}  # Add the 'paused' key
 
 
 @limit_fps(fps=FPS)
@@ -41,12 +42,18 @@ def main(screen):
         key = screen.getch()
         if key == ord('q'):
             break
-        elif key == ord('p'):
+        elif key == ord('p'):  # Use the 'p' key to pause the game
+            state['paused'] = not state['paused']  # Toggle the 'paused' state
+        elif key == ord('t'):  # Use the 't' key to enable testing/debugging mode
             state['pdb'] = True
         else:
+            state['pdb'] = False
+
+        if not state['paused']:  # If the game is not paused, update the state
+            draw_scene(screen)
             update_state(key, state)
-        state['frames'] += 1
-        state['time'] += 1/FPS
+            state['frames'] += 1
+            state['time'] += 1/FPS
     screen.clear()
     screen.getkey()
 

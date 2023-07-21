@@ -31,6 +31,7 @@ Collect as many alcoholic drinks as possible, while avoiding the `Beer` drinks. 
 | w    | Accelerate  |
 | s    |  Decelerate |
 | q    |  Quit game  |
+| p    | Pause game  |
 
 ### Installation
 
