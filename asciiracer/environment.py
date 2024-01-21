@@ -56,6 +56,16 @@ def spawn_debris(state, x_ranges):
 
 
 def spawn_money(state, x_ranges):
+    
+    def bomb():
+        return ['   _______',
+                '  /       \\',
+                ' /         \\',
+                '|   BOOM!   |',
+                " \   💥    /",
+                '  \_______/ ', ]
+                
+    
     def martini_glass(ch):
         return [r'╲___╱',
                 f" ╲{ch}╱ ",
@@ -80,7 +90,10 @@ def spawn_money(state, x_ranges):
                   (martini_glass('G'), 5),
                   (beer_can(), -20),
                   (beer_can(), -20),
-                  (beer_can(), -20)]
+                  (beer_can(), -20),
+                  (bomb(), -50),
+                  (bomb(), -50),
+                  (bomb(), -50)]
     return spawn_sprite(state, x_ranges, money_list, 1)
 
 
